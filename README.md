@@ -1,34 +1,57 @@
-# Home-Network-Design-Wireless-Security-Implementation
-## Project: Home Network Design & Wireless Security Implementation
+# Home Network Design & Wireless Security Implementation
+## Project Overview
 Platform: Cisco Packet Tracer
 
 Status: Completed & Verified
 
-### 📝 Project Objective
-The goal of this project was to design and deploy a functional home network for a residential client. The project involved establishing a physical connection to a Cable Provider network, configuring a wireless router (SOHO) via a GUI, and ensuring seamless connectivity for both wired and wireless clients.
+The goal of this project was to design and deploy a functional home network for a residential client (Natsumi). The implementation involved establishing physical layer connectivity via a Cable Provider, configuring a SOHO wireless router via GUI, and hardening the network against unauthorized access.
 
-### 🛠️ Technical Implementation
-1. Physical Layer & Media Connectivity
-Signal Splitting: Implemented a Cable Splitter to separate Video (Television) and Data (Cable Modem) services via Coaxial cabling.
+## Technical Implementation
+### 1. Physical Layer & Media Connectivity
+Signal Splitting: Implemented a Cable Splitter to separate Video (Television) and Data (Cable Modem) services using Coaxial cabling.
+![physicl layer](logialview.png)
+Internet Gateway: Established the WAN link by connecting the Cable Modem to the Wireless Router's Internet Port using Copper Straight-Through cabling.
 
-Internet Gateway: Connected the Cable Modem to the Wireless Router's Internet (WAN) Port using Copper Straight-Through cabling.
+Wired LAN: Deployed Ethernet connections for stationary hosts (Office and Bedroom PCs) to the router’s GigabitEthernet switch ports.
 
-Wired LAN: Established Ethernet connections for stationary PCs (Office and Bedroom) to the router’s GigabitEthernet switch ports.
+### 2. Router Configuration & Hardening (GUI)
+Accessed via the Office PC web browser at the default gateway (192.168.0.1), the following security and networking configurations were applied:
+![routerconfiginterface](router.png)
 
-2. Router Configuration (GUI-based)
-DHCP Management: Configured the internal DHCP server to limit the address pool to 10 maximum users to reduce the network's attack surface in a high-density area.
+Administrative Security: Mitigated unauthorized access by changing default credentials (admin/admin) to a complex password (MyPassword1!).
+![admin sec](wpa3.png)
 
-Administrative Security: Hardened the router by changing default manufacturer credentials (admin/admin) to a complex, secure password (MyPassword1!).
+DHCP Scoping: Configured the internal DHCP server to a 10-user maximum pool. This minimizes the attack surface by preventing excessive unauthorized IP assignments in a high-density environment
+![Dhcp scoping](dchp10.png)
 
-Wireless LAN (WLAN) Setup: * SSID: MyHome (2.4 GHz band).
 
-Security Protocol: Implemented WPA2-Personal (AES)—the strongest encryption available on the hardware.
+Wireless LAN (WLAN) Security:
+![Wlan security](wpa2.png)
+SSID: MyHome (2.4 GHz).
 
-Authentication: Set a Pre-Shared Key (PSK) to prevent unauthorized access.
+Encryption: Implemented WPA2-Personal (AES), the strongest protocol available on the hardware.
 
-3. Testing & Connectivity Verification
-Dynamic Addressing: Verified that all clients (Laptop and PCs) successfully pulled IPv4 addresses in the 192.168.x.x range via DHCP.
+Authentication: Set a robust Pre-Shared Key (PSK) to ensure only authorized devices can associate with the Access Point.
 
-End-to-End Connectivity: Confirmed successful HTTP requests from all internal hosts to the external web server (skillsforall.srv).
+### 3. Connectivity Verification
+I verified the network using the following CLI and Browser tests:
 
-Wireless Association: Successfully associated the Living Room Laptop with the Access Point using the configured WPA2 credentials.
+Wired Client Verification:
+
+Bash
+
+C:> ipconfig /all
+# Confirmed IPv4 Address in 192.168.0.x range
+# Confirmed Default Gateway: 192.168.0.1
+Wireless Association:
+
+Successfully associated the Living Room Laptop with the MyHome SSID.
+![laptopbrowser](laptopview.png)
+Verified HTTP connectivity by successfully loading skillsforall.srv in the web browser.
+
+## Key Skills Demonstrated
+SOHO Router Administration: GUI-based configuration and password hardening.
+
+Wireless Security: Understanding of SSID broadcasting and WPA2 encryption.
+
+Troubleshooting: Using ipconfig, ping, and web requests to verify the OSI model layers.
