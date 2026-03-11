@@ -9,7 +9,7 @@ The goal of this project was to design and deploy a functional home network for 
 ## Technical Implementation
 ### 1. Physical Layer & Media Connectivity
 Signal Splitting: Implemented a Cable Splitter to separate Video (Television) and Data (Cable Modem) services using Coaxial cabling.
-![physicl layer](logialview.png)
+![physicl layer](logicalview.png)
 Internet Gateway: Established the WAN link by connecting the Cable Modem to the Wireless Router's Internet Port using Copper Straight-Through cabling.
 
 Wired LAN: Deployed Ethernet connections for stationary hosts (Office and Bedroom PCs) to the router’s GigabitEthernet switch ports.
